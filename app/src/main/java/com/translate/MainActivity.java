@@ -1,9 +1,15 @@
 package com.translate;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.apkfuns.logutils.LogUtils;
+import com.translate.connector.HttpCallBack;
+import com.translate.connector.protocol.TranslateProtocol;
+import com.translate.database.SQLdm;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,6 +17,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new SQLdm(this).openDatabase();
+
+        TranslateProtocol.youdaoTransLate("大哥", new HttpCallBack() {
+            @Override
+            public void onGeneralSuccess(String result, long flag) {
+                LogUtils.e(result);
+            }
+
+            @Override
+            public void onGeneralError(String e, long flag) {
+
+            }
+        });
+
     }
 
     @Override
