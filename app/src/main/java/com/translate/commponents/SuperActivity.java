@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.translate.actions.ActionsCreator;
 import com.translate.dispatcher.Dispatcher;
 import com.translate.stores.Store;
+import com.umeng.analytics.MobclickAgent;
 
 
 /**
@@ -45,6 +46,7 @@ public abstract class SuperActivity extends Activity{
         super.onResume();
         dispatcher.register(this);
         dispatcher.register(store);
+        MobclickAgent.onResume(this);
     }
 
     @Override
@@ -52,6 +54,7 @@ public abstract class SuperActivity extends Activity{
         super.onPause();
         dispatcher.unregister(this);
         dispatcher.unregister(store);
+        MobclickAgent.onPause(this);
         //actionsCreator.destory();
     }
 

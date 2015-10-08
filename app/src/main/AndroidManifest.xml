@@ -26,12 +26,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <meta-data
             android:name="PGYER_APPID"
             android:value="2a02fd3aca5c6e7a9acdb576d7f44087"></meta-data>
+
+
+
+        <meta-data android:value="560a4e6467e58eefd900043e" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="${UMENG_CHANNEL_VALUE}" android:name="UMENG_CHANNEL"/>
+
     </application>
 
 </manifest>

@@ -17,10 +17,79 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
+        _360 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "_360"]
+        }
+        baidu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+        }
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+        mumayi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "mumayi"]
+        }
+        lianxiang {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "lianxiang"]
+        }
+        meizu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"]
+        }
+        pp {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "pp"]
+        }
+        jinli {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jinli"]
+        }
+        jifeng {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "jifeng"]
+        }
+
+        yingyongbao{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
+        }
+        anzhi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"]
+        }
+        rom {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "rom"]
+        }
+        youyi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "youyi"]
+        }
+        woshangdian {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "woshangdian"]
+        }
+        suning {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "suning"]
+        }
+        wangyi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wangyi"]
+        }
+
+        yingyonghui {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyonghui"]
+        }
+
+        leaderlc{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "leaderlc"]
+        }
+        huawei{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+        }
+        oppo{
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo"]
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile files('libs/gson-2.2.2.jar')
     compile files('libs/logutil-1.0.6.jar')
@@ -28,6 +97,7 @@ dependencies {
     compile files('libs/pgyer_sdk_2.2.2.jar')
     compile files('libs/Volley.jar')
     compile 'com.squareup:otto:1.3.8'
-    compile "com.android.support:support-v4:23.0.1"
-    compile "com.android.support:cardview-v7:23.0.1"
+    compile 'com.android.support:support-v4:23.0.1'
+    compile 'com.android.support:cardview-v7:23.0.1'
+    compile files('libs/umeng-analytics-v5.6.1.jar')
 }
