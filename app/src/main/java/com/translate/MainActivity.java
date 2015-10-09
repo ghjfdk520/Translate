@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         new SQLdm(this).openDatabase();
-
         TranslateProtocol.youdaoTransLate("大哥", new HttpCallBack() {
             @Override
             public void onGeneralSuccess(String result, long flag) {
