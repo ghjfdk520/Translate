@@ -5,6 +5,7 @@ package com.translate.conf;
  */
 public interface TodoConstants {
 
+    String TODO_TRANSLATE = "todo_translate";
     String TODO_CREATE = "todo-create";
     String TODO_COMPLETE = "todo-complete";
     String TODO_DESTROY = "todo-destroy";
@@ -15,4 +16,5 @@ public interface TodoConstants {
 
     String KEY_TEXT = "key-text";
     String KEY_ID = "key-id";
+    String KEY_TRANSLATE ="key-translate";
 }
