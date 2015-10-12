@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="pressedColor">
+        <item>0xFFF5466E</item>
+        <item>0xff3e2723</item>
+        <item>0xff0d5302</item>
+        <item>0xff1a237e</item>
+        <item>0xffbf360c</item>
+        <item>0xffff5177</item>
+    </integer-array>
+
+    <integer-array name="normalColor">
+        <item>0xFFff5177</item>
+        <item>0xff4e342e</item>
+        <item>0xff056f00</item>
+        <item>0xff283593</item>
+        <item>0xffd84315</item>
+        <item>0xffff5177</item>
+    </integer-array>
+
+</resources>
