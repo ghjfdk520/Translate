@@ -129,4 +129,10 @@ public class Utils {
 
         return (T) childView;
     }
+
+    public static boolean isLetterDigitOrChinese(String str){
+        String regex = "^[a-zA-Z]+$";
+
+        return str.matches(regex);
+    }
 }
