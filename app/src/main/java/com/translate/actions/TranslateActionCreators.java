@@ -40,15 +40,15 @@ public class TranslateActionCreators extends ActionsCreator{
         dispatcher.dispatch(TodoConstants.TODO_LOC_TRANSLATE,TodoConstants.KEY_LOC_TRANSLATE,dictBeans);
     }
 
-    public void TransLate(final String eng){
+    public void TransLate(final String inputWord){
 
-        TranslateProtocol.youdaoTransLate(eng, new HttpCallBack() {
+        TranslateProtocol.youdaoTransLate(inputWord, new HttpCallBack() {
             @Override
             public void onGeneralSuccess(String result, long flag) {
 
                 LogUtils.e(result);
 
-                dispatcher.dispatch(TodoConstants.TODO_TRANSLATE,TodoConstants.KEY_TRANSLATE,eng
+                dispatcher.dispatch(TodoConstants.TODO_TRANSLATE,TodoConstants.KEY_TRANSLATE,inputWord
 
                 );
             }
