@@ -127,7 +127,7 @@ public class RapidFloatingActionLayout  extends RelativeLayout implements View.O
         }
 
         this.contentView.setLayoutParams(lp);
-        this.contentView.setVisibility(GONE);
+        this.contentView.setVisibility(View.GONE);
         this.addView(this.contentView);
         return this;
     }

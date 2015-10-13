@@ -223,6 +223,11 @@ public class RapidFloatingActionButton extends FrameLayout implements View.OnCli
         return rfabProperties;
     }
 
+
+
+    public void setButtonDrawableId(int Rid){
+        this.buttonDrawable = Utils.getResourceDrawableBounded(getContext(), Rid, buttonDrawableSize);
+    }
     /**
      * 设置按钮drawable，注意：需要再调用build()方法才能生效
      *

@@ -38,7 +38,7 @@ public class TranslateProtocol {
         LinkedHashMap< String , Object > entity = new LinkedHashMap< String , Object >( );
         entity.put( "q" , word);
         entity.put( "doctype" , "json");
-        entity.put( "type" , "ZH_CN2JA");
+        entity.put( "type" , "AUTO");
 
         return TranslateProtocol(Config.youdaoWordApi, entity, callBack);
     }

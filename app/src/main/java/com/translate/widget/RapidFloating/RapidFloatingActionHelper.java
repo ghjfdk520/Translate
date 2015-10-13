@@ -93,4 +93,12 @@ public class RapidFloatingActionHelper implements OnRapidFloatingActionListener{
         rfaBtn.onCollapseAnimator(animatorSet);
     }
 
+
+    public void reView(){
+        rfaContent.setOnRapidFloatingActionListener(this);
+        rfaLayout.setContentView(rfaContent);
+        // 通知content RFABHelper构建完毕
+        rfaContent.initAfterRFABHelperBuild();
+    }
+
 }

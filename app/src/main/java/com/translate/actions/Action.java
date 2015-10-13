@@ -61,4 +61,5 @@ public class Action {
             return new Action(type, data);
         }
     }
+
 }

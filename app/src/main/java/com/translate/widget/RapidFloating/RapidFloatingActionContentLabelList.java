@@ -72,7 +72,7 @@ public class RapidFloatingActionContentLabelList extends RapidFloatingActionCont
     }
 
     @Override
-    protected void initAfterRFABHelperBuild() {
+    public void initAfterRFABHelperBuild() {
         refreshItems();
     }
 
@@ -194,6 +194,7 @@ public class RapidFloatingActionContentLabelList extends RapidFloatingActionCont
         }
 
     }
+
 
     @Override
     protected void initialContentViews(View rootView) {

@@ -1,10 +1,14 @@
 package com.translate.actions;
 
 import com.apkfuns.logutils.LogUtils;
+import com.translate.bean.DictBean;
 import com.translate.conf.TodoConstants;
 import com.translate.connector.HttpCallBack;
 import com.translate.connector.protocol.TranslateProtocol;
+import com.translate.database.DistWorker;
 import com.translate.dispatcher.Dispatcher;
+
+import java.util.List;
 
 /**
  * Created by DongZ on 15/10/4.
@@ -12,10 +16,13 @@ import com.translate.dispatcher.Dispatcher;
 public class TranslateActionCreators extends ActionsCreator{
 
 
-    private static TranslateActionCreators instance;
+    private DistWorker distWorker;
+
+     private static TranslateActionCreators instance;
 
     TranslateActionCreators() {
         super();
+        distWorker = new DistWorker();
     }
 
     public static TranslateActionCreators getInstance() {
@@ -26,6 +33,11 @@ public class TranslateActionCreators extends ActionsCreator{
             }
         }
         return instance;
+    }
+
+    public void localTranslate(final String word){
+        List<DictBean> dictBeans = distWorker.queryWord(word);
+        dispatcher.dispatch(TodoConstants.TODO_LOC_TRANSLATE,TodoConstants.KEY_LOC_TRANSLATE,dictBeans);
     }
 
     public void TransLate(final String eng){

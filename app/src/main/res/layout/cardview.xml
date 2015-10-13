@@ -16,15 +16,14 @@
 
 
             <TextView
-                android:id="@android:id/text1"
+                android:id="@+id/org"
                 style="@style/Widget.SampleDashboard.Item.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hello world" />
 
             <TextView
-
-                android:id="@android:id/text2"
+                android:id="@+id/phrases"
                 style="@style/Widget.SampleDashboard.Item.Description"
                 android:layout_width="match_parent"
                 android:text="@string/hello_world"

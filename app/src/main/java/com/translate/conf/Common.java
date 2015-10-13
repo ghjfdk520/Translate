@@ -33,4 +33,20 @@ public class Common {
         iconRids.add(R.mipmap.kr); //4
         iconRids.add(R.mipmap.ru); //5
     }
+
+    //获取默认显示翻译语言图片
+    public int getRapidId(){
+        return iconRids.get(translateId);
+    }
+    public int getRapidId(int position){
+        return iconRids.get(position);
+    }
+    public int getTranslateId(){
+        return translateId;
+    }
+    public void setTranslateId(int id){
+        SharedPreferenceUtil.getInstance(BaseApplication.mContext).putInt(SharedPreferenceUtil.TRANSLATE_LANGUAGE, id);
+        this.translateId = id;
+    }
+
 }

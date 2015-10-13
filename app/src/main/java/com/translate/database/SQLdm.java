@@ -36,7 +36,6 @@ public class SQLdm {
 
     public void openDatabase() {
         this.database = this.openDatabase(DB_PATH + "/" + DB_NAME);
-        new DistWorker(context).getDict();
     }
 
     private SQLiteDatabase openDatabase(String dbfile) {

@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string-array name="translate_language">
+        <item>AUTO</item>
+        <item>ZH_CN2EN</item>
+        <item>ZH_CN2FR</item>
+        <item>ZH_CN2JA</item>
+        <item>ZH_CN2KR</item>
+        <item>ZH_CN2RU</item>
+    </string-array>
+
     <integer-array name="pressedColor">
+        <item>0xff0a7e07</item>
+        <item>0xff0288d1</item>
+        <item>0xff512da8</item>
+
         <item>0xFFF5466E</item>
-        <item>0xff3e2723</item>
-        <item>0xff0d5302</item>
         <item>0xff1a237e</item>
         <item>0xffbf360c</item>
-        <item>0xffff5177</item>
-    </integer-array>
 
+    </integer-array>
+    <!--<item>0xff3e2723</item>-->
     <integer-array name="normalColor">
+        <item>0xff0a8f08</item>
+        <item>0xff039be5</item>
+        <item>0xff5e35b1</item>
+
         <item>0xFFff5177</item>
-        <item>0xff4e342e</item>
-        <item>0xff056f00</item>
         <item>0xff283593</item>
         <item>0xffd84315</item>
-        <item>0xffff5177</item>
-    </integer-array>
 
+    </integer-array>
+    <!--<item>0xff4e342e</item>-->
 </resources>
