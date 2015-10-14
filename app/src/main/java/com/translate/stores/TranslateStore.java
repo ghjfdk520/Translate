@@ -50,6 +50,8 @@ public class TranslateStore extends Store {
         long id;
         switch (action.getType()) {
             case TodoConstants.TODO_TRANSLATE:
+                queryOnline((DictBean) action.getData().get((TodoConstants.KEY_TRANSLATE)));
+                emitStoreChange();
                 break;
             case TodoConstants.TODO_LOC_TRANSLATE:
                 queryResult((List<DictBean>) action.getData().get(TodoConstants.KEY_LOC_TRANSLATE));
@@ -58,6 +60,10 @@ public class TranslateStore extends Store {
         }
     }
 
+    public void queryOnline(DictBean dictBean){
+        this.dictBeans.clear();
+        this.dictBeans.add(dictBean);
+    }
 
     public void queryResult(List<DictBean> dictBeans){
         this.dictBeans.clear();

@@ -9,7 +9,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.squareup.otto.Subscribe;
 import com.translate.actions.TranslateActionCreators;
@@ -88,14 +87,19 @@ public class MainActivity extends SuperActivity implements RapidFloatingActionCo
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 String inputWord = s.toString().trim();
-                if (Utils.isEmpty(inputWord) || !Utils.isLetterDigitOrChinese(inputWord) )
+                if (Utils.isEmpty(inputWord)) {
+                    loctAdapter.clearData();
+                    ((TranslateActionCreators) actionsCreator).localTranslate(inputWord);
+                }
+
+                if (!Utils.isLetterDigitOrChinese(inputWord))
                     return;
+
 
                 if (!inputWord.contains(" "))
                     ((TranslateActionCreators) actionsCreator).localTranslate(inputWord);
@@ -190,7 +194,6 @@ public class MainActivity extends SuperActivity implements RapidFloatingActionCo
     }
 
     private void updateUI() {
-        Toast.makeText(this,"uiUpdate",2000).show();
         loctAdapter.setItems(((TranslateStore)store).getDictBeans());
     }
 }

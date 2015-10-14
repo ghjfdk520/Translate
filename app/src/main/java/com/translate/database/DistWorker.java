@@ -53,10 +53,11 @@ public class DistWorker extends ITableWorker {
         ContentValues values = new ContentValues();
         values.put(ORG, dictBean.dict.org);
         values.put(PHONETIC, dictBean.dict.getPhonetic());
-        values.put(PHRASES, dictBean.dict.getPhrases());
+//        values.put(PHRASES, dictBean.dict.getPhrases());
         values.put(SENTENCE, dictBean.dict.org);
         return onInsert(values);
     }
+
 
     public List<DictBean> queryWord(String word) {
         String where = ORG + " like '" + word + "%'";
@@ -73,12 +74,14 @@ public class DistWorker extends ITableWorker {
                 dict.setPhonetic(cursor.getString(cursor.getColumnIndex(PHONETIC)));
                 dict.setPhrases(cursor.getString(cursor.getColumnIndex(PHRASES)));
 
+
                 dictBean.dict = dict;
                 dictBean.sentenceParse(cursor.getString(cursor.getColumnIndex(SENTENCE)));
                 dictBeans.add(dictBean);
                 LogUtils.e(cursor.getString(cursor.getColumnIndex(ORG)) + "  " + cursor.getString(cursor.getColumnIndex(PHRASES)) + "  " + cursor.getString(cursor.getColumnIndex(PHONETIC)) + "  "
                                 + cursor.getString(cursor.getColumnIndex(SENTENCE)) + "  "
                 );
+
         }
         return dictBeans;
 

@@ -59,7 +59,15 @@ public class LoctAdapter extends RecyclerView.Adapter<LoctAdapter.ViewHolder>
 
         public void bindView(final DictBean dictBean){
             org.setText(dictBean.dict.getOrg());
-            phrases.setText(dictBean.dict.getPhrases());
+
+
+
+            phrases.setText(dictBean.dict.getPhrases().get(0));
         }
+    }
+
+    public void clearData(){
+        dictBeans.clear();
+        notifyDataSetChanged();
     }
 }

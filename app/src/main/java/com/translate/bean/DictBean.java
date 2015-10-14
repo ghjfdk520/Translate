@@ -20,7 +20,7 @@ public class DictBean {
     }
     public static class Dict{
         public String phonetic;
-        public String phrases;
+        public List<String> phrases;
         public String org;
 
 
@@ -32,12 +32,16 @@ public class DictBean {
             this.phonetic = phonetic;
         }
 
-        public String getPhrases() {
+        public List<String> getPhrases() {
             return phrases;
         }
 
         public void setPhrases(String phrases) {
-            this.phrases = phrases;
+            this.phrases = new ArrayList<>();
+            String temp[] = phrases.split("#");
+            for (String s : temp) {
+                this.phrases.add(s);
+            }
         }
 
         public String getOrg() {
