@@ -1,6 +1,7 @@
 package com.translate.connector.protocol;
 
 
+import com.translate.conf.Common;
 import com.translate.conf.Config;
 import com.translate.connector.ConnectorManage;
 import com.translate.connector.HttpCallBack;
@@ -11,6 +12,8 @@ import java.util.LinkedHashMap;
  * Created by Administrator on 2015/9/20.
  */
 public class TranslateProtocol {
+
+
 
     private static long TranslateProtocol(String url,
                                           LinkedHashMap<String, Object> map, HttpCallBack callback) {
@@ -38,7 +41,7 @@ public class TranslateProtocol {
         LinkedHashMap< String , Object > entity = new LinkedHashMap< String , Object >( );
         entity.put( "q" , word);
         entity.put( "doctype" , "json");
-        entity.put( "type" , "AUTO");
+        entity.put( "type" , Common.getInstance().getTranslateType());
 
         return TranslateProtocol(Config.youdaoWordApi, entity, callBack);
     }

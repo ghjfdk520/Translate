@@ -94,8 +94,9 @@ public class MainActivity extends SuperActivity implements RapidFloatingActionCo
             @Override
             public void afterTextChanged(Editable s) {
                 String inputWord = s.toString().trim();
-                if (Utils.isEmpty(inputWord))
+                if (Utils.isEmpty(inputWord) || !Utils.isLetterDigitOrChinese(inputWord) )
                     return;
+
                 if (!inputWord.contains(" "))
                     ((TranslateActionCreators) actionsCreator).localTranslate(inputWord);
 

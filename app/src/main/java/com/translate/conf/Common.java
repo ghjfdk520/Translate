@@ -11,10 +11,21 @@ import java.util.List;
  * Created by DongZ on 2015/10/12 0012.
  */
 public class Common {
+
+    private String[] translateType;
+
     private static List<Integer> iconRids = new ArrayList<>();
+
+
     private static int translateId ;
+
+    public Common(){
+        translateType = BaseApplication.mContext.getResources().getStringArray(R.array.translate_language);
+    }
+
     private static class SingleInstance{
         public static Common INSTANCE = new Common();
+
     }
     public static Common getInstance(){
         return SingleInstance.INSTANCE;
@@ -49,4 +60,10 @@ public class Common {
         this.translateId = id;
     }
 
+
+    public String getTranslateType(){
+
+        int position = SharedPreferenceUtil.getInstance(BaseApplication.mContext).getInt(SharedPreferenceUtil.TRANSLATE_LANGUAGE);
+        return translateType[position];
+    }
 }
