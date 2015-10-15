@@ -1,12 +1,15 @@
 package com.translate;
 
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -17,6 +20,7 @@ import com.translate.commponents.SuperActivity;
 import com.translate.conf.Common;
 import com.translate.stores.TranslateStore;
 import com.translate.utils.Utils;
+import com.translate.widget.CircleIndicator.CircleIndicator;
 import com.translate.widget.RapidFloating.RFACLabelItem;
 import com.translate.widget.RapidFloating.RapidFloatingActionButton;
 import com.translate.widget.RapidFloating.RapidFloatingActionContentLabelList;
@@ -26,6 +30,7 @@ import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class MainActivity extends SuperActivity implements RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener,View.OnClickListener {
@@ -42,6 +47,11 @@ public class MainActivity extends SuperActivity implements RapidFloatingActionCo
     private int[] normalColors;
     private int[] pressColors;
 
+
+
+    private List<View> viewList;
+    private ViewPager viewPager;
+    private CircleIndicator circleIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +85,8 @@ public class MainActivity extends SuperActivity implements RapidFloatingActionCo
         rfaContent = new RapidFloatingActionContentLabelList(this);
         rfaContent.setOnRapidFloatingActionContentLabelListListener(this);
         setRapidFolating();
+
+        initData();
     }
 
 
@@ -97,9 +109,10 @@ public class MainActivity extends SuperActivity implements RapidFloatingActionCo
                     ((TranslateActionCreators) actionsCreator).localTranslate(inputWord);
                 }
 
-                if (!Utils.isLetterDigitOrChinese(inputWord))
-                    return;
-
+//                if (!Utils.isLetterDigitOrChinese(inputWord)) {
+//
+//                    return;
+//                }
 
                 if (!inputWord.contains(" "))
                     ((TranslateActionCreators) actionsCreator).localTranslate(inputWord);
@@ -194,49 +207,72 @@ public class MainActivity extends SuperActivity implements RapidFloatingActionCo
     }
 
     private void updateUI() {
+
+        listView.scrollToPosition(0);
         loctAdapter.setItems(((TranslateStore)store).getDictBeans());
     }
+
+
+
+    private void initData(){
+        viewList = new ArrayList<View>();
+        Random random = new Random();
+        for(int i=0;i<5;i++){
+            View view = new View(this);
+            view.setBackgroundColor(0xff000000| random.nextInt(0x00ffffff));
+            viewList.add(view);
+        }
+
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(pagerAdapter);
+
+        circleIndicator = (CircleIndicator) findViewById(R.id.indicator);
+        circleIndicator.setViewPager(viewPager);
+
+
+
+    }
+    PagerAdapter pagerAdapter = new PagerAdapter() {
+
+        @Override
+        public boolean isViewFromObject(View arg0, Object arg1) {
+
+            return arg0 == arg1;
+        }
+
+        @Override
+        public int getCount() {
+
+            return viewList.size();
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position,
+                                Object object) {
+            container.removeView(viewList.get(position));
+
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+
+            return super.getItemPosition(object);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+
+            return "title";
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            container.addView(viewList.get(position));
+
+            return viewList.get(position);
+        }
+
+    };
+
 }
-//         RunMethod();
-//        new SQLdm(this).openDatabase();
-//        TranslateProtocol.youdaoTransLate("大哥", new HttpCallBack() {
-//            @Override
-//            public void onGeneralSuccess(String result, long flag) {
-//                LogUtils.e(result);
-//            }
-//
-//            @Override
-//            public void onGeneralError(String e, long flag) {
-//
-//            }
-//        });
-//
-//        LogUtils.e(Utils.getDeviceInfo(this));
-//
-//
-//
-//        listView = (ListView) findViewById(R.id.list);
-//        input = (CardView) findViewById(R.id.input);
-//        BaseAdapter baseAdapter = new BaseAdapter() {
-//            @Override
-//            public int getCount() {
-//                return 10;
-//            }
-//
-//            @Override
-//            public Object getItem(int position) {
-//                return null;
-//            }
-//
-//            @Override
-//            public long getItemId(int position) {
-//                return 0;
-//            }
-//
-//            @Override
-//            public View getView(int position, View convertView, ViewGroup parent) {
-//                View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.cardview,null);
-//                return view;
-//            }
-//        };
-//        listView.setAdapter(baseAdapter);

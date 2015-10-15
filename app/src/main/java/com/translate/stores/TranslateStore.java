@@ -62,11 +62,13 @@ public class TranslateStore extends Store {
 
     public void queryOnline(DictBean dictBean){
         this.dictBeans.clear();
+        if(dictBean!=null)
         this.dictBeans.add(dictBean);
     }
 
     public void queryResult(List<DictBean> dictBeans){
         this.dictBeans.clear();
+        if(dictBeans!=null)
         this.dictBeans.addAll(dictBeans);
     }
 

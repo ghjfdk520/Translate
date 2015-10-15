@@ -2,6 +2,7 @@ package com.translate.utils;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -10,7 +11,9 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.util.Collection;
@@ -19,6 +22,8 @@ import java.util.Collection;
  * Created by Administrator on 2015/9/9.
  */
 public class Utils {
+    private static int screenHeight = 0;
+
     public static void toastMsg( Context context , String sMsg )
     {
         Toast.makeText(context, sMsg, Toast.LENGTH_SHORT).show( );
@@ -134,5 +139,18 @@ public class Utils {
         String regex = "^[a-zA-Z]+$";
 
         return str.matches(regex);
+    }
+
+
+    public static int getScreenHeight(Context c) {
+        if (screenHeight == 0) {
+            WindowManager wm = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            screenHeight = size.y;
+        }
+
+        return screenHeight;
     }
 }

@@ -60,6 +60,10 @@ public class TranslateActionCreators extends ActionsCreator{
             return;
         }
 
+        if(!Utils.isLetterDigitOrChinese(word)){
+            sendEmptyMethod();
+            return;
+        }
         translateBean = new TranslateBean();
         translateBean.setOrg(word);
         translateBean.setAddTime(System.currentTimeMillis());
@@ -86,7 +90,7 @@ public class TranslateActionCreators extends ActionsCreator{
             public void onGeneralSuccess(String result, long flag) {
 
                 LogUtils.e(result);
-                dictBean = gson.fromJson(result,DictBean.class);
+                dictBean = gson.fromJson(result, DictBean.class);
                 dispatcher.dispatch(TodoConstants.TODO_TRANSLATE, TodoConstants.KEY_TRANSLATE, dictBean
                 );
             }
@@ -104,7 +108,12 @@ public class TranslateActionCreators extends ActionsCreator{
         translateBeanLinkedList.addFirst(translateBean);
 
         List<DictBean> dictBeans = distWorker.queryWord(inputWord);
-        dispatcher.dispatch(TodoConstants.TODO_LOC_TRANSLATE,TodoConstants.KEY_LOC_TRANSLATE,dictBeans);
+        dispatcher.dispatch(TodoConstants.TODO_LOC_TRANSLATE, TodoConstants.KEY_LOC_TRANSLATE, dictBeans);
+    }
+
+    public void sendEmptyMethod(){
+        dispatcher.dispatch(TodoConstants.TODO_LOC_TRANSLATE);
+
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.translate.conf;
 import com.translate.R;
 import com.translate.commponents.BaseApplication;
 import com.translate.database.SharedPreferenceUtil;
+import com.translate.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,9 @@ public class Common {
 
     private static List<Integer> iconRids = new ArrayList<>();
 
-
     private static int translateId ;
+
+    public int screenHeight= Utils.getScreenHeight(BaseApplication.mContext);
 
     public Common(){
         translateType = BaseApplication.mContext.getResources().getStringArray(R.array.translate_language);
